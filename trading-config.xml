@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<tradeModels>
+   <tradeModel name="ESP" initialState="Initial">
+      <state name="Initial">
+         <transition target="OpenSent" trigger="Open" source="client"/>
+      </state>
+      <state name="Timeout"/>
+      <state name="OpenSent" timeout="10" timeoutState="Timeout">
+         <transition target="Opened" trigger="OpenAck" source="server"/>
+      </state>
+      <state name="Opened" timeout="10" timeoutState="Timeout">
+         <transition target="TradeConfirmed" trigger="TradeConfirmation" source="server"/>
+         <transition target="TradePassed" trigger="Pass" source="server"/>
+         <transition target="TradeExpired" trigger="Expired" source="server"/>
+      </state>
+      <state name="TradeConfirmed"/>
+      <state name="TradePassed"/>
+      <state name="TradeExpired"/>
+   </tradeModel>
+</tradeModels>

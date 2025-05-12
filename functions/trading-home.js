@@ -1,4 +1,17 @@
-<html><head>
+'use strict'
+var mysql = require('mysql2')
+var serverless = require('serverless-http')
+var express = require('express')
+var app = express();
+var router = express.Router();
+var bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json())
+
+
+
+app.post('/',(res,res)=>{
+res.send(`<html><head>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet">
@@ -574,4 +587,11 @@ Ruston, LA 71270</b></p>
 
 </div>
 
-</body></html>
+</body></html>`)
+
+
+}
+)
+
+app.use('/.netlify/functions/trading-home',router)
+module.exports.handler = serverless(app)

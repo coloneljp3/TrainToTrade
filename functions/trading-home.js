@@ -8,6 +8,10 @@ var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
+function createNode(){}
+function softMax(){}
+function RELU(){}
+function sigmoidF(){}
 
 
 app.post('/',(res,res)=>{
